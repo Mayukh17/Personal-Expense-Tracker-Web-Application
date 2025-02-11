@@ -1,0 +1,7 @@
+Features the application has is:
+
+Add Expenses: Users can add expenses with details like amount, category, and date.
+View Expenses: Display all expenses in a table with sorting and filtering options.
+Expense Categories: Categorize expenses (e.g., Food, Travel, Entertainment).
+Visualization: Show spending trends using charts (e.g., bar charts, pie charts).
+Responsive Design: The app should work on both desktop and mobile devices.
