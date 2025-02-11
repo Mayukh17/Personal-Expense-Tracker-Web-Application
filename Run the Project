@@ -1,0 +1,8 @@
+Install dependencies:
+pip install -r backend/requirements.txt
+
+
+Run the backend:
+python backend/app.py
+
+Open frontend/index.html in your browser.
