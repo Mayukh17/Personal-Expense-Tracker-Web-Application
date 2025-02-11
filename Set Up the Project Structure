@@ -1,0 +1,14 @@
+
+
+expense-tracker/
+├── backend/
+│   ├── app.py
+│   ├── requirements.txt
+│   └── models.py
+├── frontend/
+│   ├── index.html
+│   ├── styles.css
+│   └── script.js
+├── README.md
+└── .gitignore
+
