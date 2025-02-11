@@ -1,0 +1,48 @@
+document.getElementById('expenseForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const amount = document.getElementById('amount').value;
+    const category = document.getElementById('category').value;
+    const date = document.getElementById('date').value;
+
+    const response = await fetch('http://127.0.0.1:5000/expenses', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount, category, date })
+    });
+
+    if (response.ok) {
+        alert('Expense added successfully!');
+        loadExpenses();
+    }
+});
+
+async function loadExpenses() {
+    const response = await fetch('http://127.0.0.1:5000/expenses');
+    const expenses = await response.json();
+    const tbody = document.querySelector('#expenseTable tbody');
+    tbody.innerHTML = expenses.map(expense => `
+        <tr>
+            <td>${expense.amount}</td>
+            <td>${expense.category}</td>
+            <td>${expense.date}</td>
+        </tr>
+    `).join('');
+
+    // Chart.js
+    const ctx = document.getElementById('chart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: expenses.map(e => e.date),
+            datasets: [{
+                label: 'Expenses',
+                data: expenses.map(e => e.amount),
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        }
+    });
+}
+
+loadExpenses();
